@@ -17,7 +17,7 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll() {
-//        System.setProperty("driver", System.getProperty("driver", "local"));
+        System.setProperty("driver", System.getProperty("driver", "local"));
         WebDriverConfig driverConfig = ConfigFactory.create(WebDriverConfig.class);
         Configuration.baseUrl = "https://store.steampowered.com/";
         Configuration.pageLoadStrategy = "normal";

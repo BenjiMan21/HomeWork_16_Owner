@@ -1,6 +1,6 @@
 package config;
 
-//import org.aeonbits.owner.Config;
+import org.aeonbits.owner.Config;
 
 @Config.Sources({
         "classpath:config/${driver}.properties"

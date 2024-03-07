@@ -82,11 +82,9 @@ public class JobTest extends TestBase {
         step("Добавляем видеоигру в корзину", ()-> {
             $(".btn_addtocart").click();
         });
-        step("Возвращаемся на главную страницу, " +
-                "затем снова в корзину и проверяем что видеоигра находится в корзине", ()-> {
-            $(".store_nav").$(byText("Your Store")).click();
-            $("#cart_link").click();
-            $(".cart_item_list").shouldHave(text(game));
+        step("Проверяем что видеоигра находится в корзине", ()-> {
+            $("#cart_status_data").click();
+            $(".Panel Focusable").shouldHave(text(game));
         });
     }
 
@@ -104,14 +102,12 @@ public class JobTest extends TestBase {
         step("Добавляем видеоигру в корзину", ()-> {
             $(".btn_addtocart").click();
         });
-        step("Возвращаемся на главную страницу, " +
-                "затем снова в корзину и удаляем видеоигру из корзины", ()-> {
-            $(".store_nav").$(byText("Your Store")).click();
-            $("#cart_link").click();
-            $(".remove_link").click();
+        step("Затем заходим в корзину и удаляем видеоигру из корзины", ()-> {
+            $("#cart_status_data").click();
+            $(".Panel Focusable").shouldHave(text("Remove")).click();
         });
         step("Проверяем что товар удалён из корзины", ()-> {
-            $(".cart_status_message").shouldHave(text("Your item has been removed!"));
+            $(".Panel Focusable").shouldHave(text("Your cart is empty."));
         });
     }
 

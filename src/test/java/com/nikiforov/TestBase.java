@@ -17,7 +17,6 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll() {
-        System.setProperty("driver", System.getProperty("driver", "local"));
         WebDriverConfig driverConfig = ConfigFactory.create(WebDriverConfig.class);
         Configuration.baseUrl = "https://store.steampowered.com/";
         Configuration.pageLoadStrategy = "normal";
@@ -25,15 +24,14 @@ public class TestBase {
         Configuration.browser = System.getProperty("browser", driverConfig.browserName());
         Configuration.browserVersion = System.getProperty("browserVersion", driverConfig.browserVersion());
         Configuration.browserSize = System.getProperty("browserSize", driverConfig.browserSize());
-        if (driverConfig.isRemote()) {
-            Configuration.remote = System.getProperty("browserRemoteUrl", driverConfig.browserRemoteUrl());
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                    "enableVNC", true,
-                    "enableVideo", true
-            ));
-            Configuration.browserCapabilities = capabilities;
-        }
+        Configuration.remote = System.getProperty("browserRemoteUrl", driverConfig.browserRemoteUrl());
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
     }
 
     @BeforeEach

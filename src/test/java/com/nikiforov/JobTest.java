@@ -84,7 +84,7 @@ public class JobTest extends TestBase {
         });
         step("Проверяем что видеоигра находится в корзине", ()-> {
             $(".DialogContent_InnerWidth").shouldHave(text("View My Cart (1)")).click();
-            $(".ShoppingCart").shouldHave(text(game));
+            $(".page_content_ctn").shouldHave(text(game));
         });
     }
 
@@ -103,11 +103,11 @@ public class JobTest extends TestBase {
             $(".btn_addtocart").click();
         });
         step("Затем заходим в корзину и удаляем видеоигру из корзины", ()-> {
-            $("#cart_status_data").click();
-            $(".Panel Focusable").shouldHave(text("Remove")).click();
+            $(".DialogContent_InnerWidth").shouldHave(text("View My Cart (1)")).click();
+            $("._33j4SwfO2YH9eI6qV9BKaL").shouldHave(text("Remove")).click();
         });
         step("Проверяем что товар удалён из корзины", ()-> {
-            $(".Panel Focusable").shouldHave(text("Your cart is empty."));
+            $("._17GFdSD2pc0BquZk5cejg8").shouldHave(text("Your cart is empty."));
         });
     }
 

@@ -107,7 +107,7 @@ public class JobTest extends TestBase {
             $("._33j4SwfO2YH9eI6qV9BKaL").shouldHave(text("Remove")).click();
         });
         step("Проверяем что товар удалён из корзины", ()-> {
-            $("._17GFdSD2pc0BquZk5cejg8").shouldHave(text("Your cart is empty."));
+            $(byText("Your cart is empty."));
         });
     }
 

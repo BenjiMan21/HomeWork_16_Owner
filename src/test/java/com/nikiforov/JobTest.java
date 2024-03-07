@@ -83,7 +83,7 @@ public class JobTest extends TestBase {
             $(".btn_addtocart").click();
         });
         step("Проверяем что видеоигра находится в корзине", ()-> {
-            $(".Primary Focusable").click();
+            $(".DialogButton").shouldHave(text("View My Cart (1)")).click();
             $(".ShoppingCart").shouldHave(text(game));
         });
     }

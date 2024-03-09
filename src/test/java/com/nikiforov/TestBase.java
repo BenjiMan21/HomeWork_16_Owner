@@ -21,10 +21,10 @@ public class TestBase {
         Configuration.baseUrl = "https://store.steampowered.com/";
         Configuration.pageLoadStrategy = "normal";
         Configuration.timeout = 5000;
-        Configuration.browser = System.getProperty("browser", driverConfig.browserName());
-        Configuration.browserVersion = System.getProperty("browserVersion", driverConfig.browserVersion());
-        Configuration.browserSize = System.getProperty("browserSize", driverConfig.browserSize());
-        Configuration.remote = System.getProperty("browserRemoteUrl", driverConfig.browserRemoteUrl());
+        Configuration.browser = driverConfig.browserName();
+        Configuration.browserVersion = driverConfig.browserVersion();
+        Configuration.browserSize = driverConfig.browserSize();
+        Configuration.remote = driverConfig.browserRemoteUrl();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
